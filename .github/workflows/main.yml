@@ -14,9 +14,9 @@ jobs:
     - name: Set up Xcode
       run: sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 
-    - name: Compile dylib using xcodebuild
+    - name: Compile dylib ignoring scheme structures
       run: |
-        xcodebuild -project Dumper.xcodeproj -scheme Dumper -configuration Release -sdk iphoneos CONFIGURATION_BUILD_DIR=./build
+        xcodebuild -project Dumper.xcodeproj -alltargets -configuration Release -sdk iphoneos CONFIGURATION_BUILD_DIR=./build
 
     - name: Upload compiled .dylib Artifact
       uses: actions/upload-artifact@v4
